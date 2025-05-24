@@ -12,9 +12,8 @@ router.get('/', async (req, res) => {
       return res.status(404).json({ error: 'No profile data found' });
     }
 
-    res.status(200).json(results);
+    return res.status(200).json(results);
   } catch (error) {
-    console.error("Error fetching profile data:", error);
     res.status(500).json({ error: 'Server error while fetching profile data' });
   }
 });

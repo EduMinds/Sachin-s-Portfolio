@@ -14,23 +14,6 @@ const Project = () => {
       .then((data) => setProjects(data))
       .catch((error) => {
         console.error("Error fetching projects:", error);
-        // Fallback projects if API fails
-        setProjects([
-          {
-            title: "Portfolio Website",
-            description: "A responsive portfolio website built with React and Node.js",
-            image: "/src/assets/portfolio.png",
-            github: "https://github.com/yourusername/portfolio",
-            live: "https://your-portfolio.com"
-          },
-          {
-            title: "E-commerce Platform",
-            description: "A full-stack e-commerce platform with Magento 2",
-            image: "/src/assets/ecommerce.png",
-            github: "https://github.com/yourusername/ecommerce",
-            live: "https://your-ecommerce.com"
-          }
-        ]);
       });
   }, []);
 
@@ -41,24 +24,24 @@ const Project = () => {
         {projects.map((project, index) => (
           <div key={index} className="project-card">
             <img 
-              src={project.image} 
-              alt={project.title} 
+              src={project.image || "https://via.placeholder.com/300x200?text=Project+Image"} 
+              alt={project.name} 
               className="project-image"
               onError={(e) => {
                 e.target.src = "https://via.placeholder.com/300x200?text=Project+Image";
               }}
             />
             <div className="project-content">
-              <h3 className="project-title">{project.title}</h3>
+              <h3 className="project-title">{project.name}</h3>
               <p className="project-description">{project.description}</p>
               <div className="project-links">
-                {project.github && (
-                  <a href={project.github} className="project-link" target="_blank" rel="noreferrer">
+                {project.github_links && (
+                  <a href={project.github_links} className="project-link" target="_blank" rel="noreferrer">
                     GitHub
                   </a>
                 )}
-                {project.live && (
-                  <a href={project.live} className="project-link" target="_blank" rel="noreferrer">
+                {project.website_url && (
+                  <a href={project.website_url} className="project-link" target="_blank" rel="noreferrer">
                     Live Demo
                   </a>
                 )}

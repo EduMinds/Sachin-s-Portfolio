@@ -12,9 +12,11 @@ require("./dbconfig/dbconfig");
 
 const homepageRouter = require('./api/homepage');
 const skillsRouter = require('./api/skills');
+const projectsRouter = require('./api/projects')
 
 app.use('/home', homepageRouter);
 app.use('/skills', skillsRouter);
+app.use('/projects', projectsRouter);
 
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
